@@ -6,6 +6,7 @@ import {
   LOGIN_USER,
   LOGIN_USER_FAIL
 } from './types';
+var userDAta = require('../user.json');
 
 export const emailChanged = (text) => {
   return {
@@ -25,7 +26,7 @@ export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
     if(email =='mukesh' && password == 'mukesh') {
-      loginUserSuccess(dispatch,email)
+      loginUserSuccess(dispatch,userDAta)
     }else if(email =='') {
     dispatch({ type: LOGIN_USER_FAIL, payload: 'email required' });
     }else if(password =='') {
@@ -36,6 +37,7 @@ export const loginUser = ({ email, password }) => {
 }
 
 export const loginUserSuccess = (dispatch, user) => {
+  console.warn(user);
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
