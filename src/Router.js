@@ -19,22 +19,24 @@ export default class RouterComponent extends Component{
     return (
       <Router>
       <Scene key="root">
+        <Scene key="auth"  hideNavBar>
+          <Scene 
+            component={Login}
+            key="login"
+            title="Login"
+            hideNavBar
+            initial
+          />
+        </Scene>
         <Scene 
-          component={Login}
-          key="login"
-          title="Login"
-          hideNavBar
-          initial
-        />
-        <Scene 
-        hideBackImage
+        type='replace'
+        hideNavBar
           key="home"
           component={Home}
           title="Home"
-          
           panHandlers={null}
         />
-      </Scene>
+     </Scene>
     </Router>
   );
   }
